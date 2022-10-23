@@ -1,0 +1,32 @@
+name: Action
+
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+
+jobs:
+  londonmapbot-post:
+    runs-on: macOS-latest
+    env:
+      TWITTER_CONSUMER_API_KEY: ${{ secrets.TWITTER_CONSUMER_API_KEY }}
+      TWITTER_CONSUMER_API_SECRET: ${{ secrets.TWITTER_CONSUMER_API_SECRET }}
+      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      MAPBOX_PUBLIC_ACCESS_TOKEN: ${{ secrets.MAPBOX_PUBLIC_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v2
+      - name: Install rtweet package
+        run: Rscript -e 'install.packages("rtweet", dependencies = TRUE)'
+      - name: AF
+        run: Rscript af.R
+      - name: AU
+        run: Rscript au.R
+      - name: AS
+        run: Rscript as.R
+      - name: EU
+        run: Rscript eu.R
+      - name: NAM
+        run: Rscript nam.R
+      - name: SAM
+        run: Rscript sam.R
