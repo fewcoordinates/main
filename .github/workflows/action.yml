@@ -30,3 +30,7 @@ jobs:
         run: Rscript nam.R
       - name: SAM
         run: Rscript sam.R
+      - name: KR-JP
+        run: Rscript krjp.R
+      - name: FIMP
+        run: Rscript fimp.R
